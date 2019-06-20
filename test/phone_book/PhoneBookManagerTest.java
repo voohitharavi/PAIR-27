@@ -103,6 +103,41 @@ public class PhoneBookManagerTest {
         System.out.println("Contact information cannot be saved with empty number");
     }    
     
-    
+    @Test
+    public void testDeleteEntry() {
+        System.out.println("Delte Entry");
+        String name = "Delete"; // enter name as deltere
+        String phone = "7654666"; // enter telephone number
+        PhoneBookManager manager = PhoneBookManager.createManagerInst(); // create instance for java class PhoneBookManager
+        boolean expResult = true; //expected value is true
+        manager.addPhoneInfo(name, phone); // add contact information
+        boolean result = manager.deleteData(name); // delete entry
+        assertEquals(expResult, result); // check contact information is deleted
+        System.out.println("Contact information deleted successfully");
+    }
+
+    @Test
+    public void testSearchForNonExistentEntry() {
+        System.out.println("Non existent Entry");
+        String name = "NONEXISTED"; // enter name 
+        String phone = "7654666"; // enter telephone number
+        PhoneBookManager manager = PhoneBookManager.createManagerInst(); // create instance for java class PhoneBookManager
+        String expResult = "NONEXISTED"; //expected value is true
+        String result = manager.searchData(name); // earch data
+        if(result == null); // check contact information is found
+        System.out.println("Contact information not found");
+    }   
+    @Test
+    public void testSearchForExistingEntry() {
+        System.out.println("existing Entry");
+        String name = "EXISTING"; // enter name 
+        String phone = "7654666"; // enter telephone number
+        PhoneBookManager manager = PhoneBookManager.createManagerInst(); // create instance for java class PhoneBookManager
+        String expResult = "EXISTING"; //expected value is true
+        manager.addPhoneInfo(name, phone); // add contact information
+        String result = manager.searchData(name); // earch data
+        if(result != null); // check contact information is found
+        System.out.println("Contact information is found");
+    } 
     
 }
